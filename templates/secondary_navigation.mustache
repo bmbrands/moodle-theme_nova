@@ -1,0 +1,57 @@
+<div class="d-flex">
+    <ul class="nav nav-tabs ml-0" style="margin-bottom: -1px">
+
+        {{#secondarynav}}
+            <li class="nav-item dropdown">
+                <a id="{{key}}" class="nav-link dropdown-toggle {{#isactive}}active{{/isactive}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{text}}</a>
+                <div class="dropdown-menu">
+                    {{#children}}
+                        {{#display}}
+                            {{^children.count}}
+                                <a class="dropdown-item" href="{{{action}}}">{{{text}}}</a>
+                                {{#devider}}
+                                    <div class="dropdown-divider"></div>
+                                {{/devider}}
+                            {{/children.count}}
+                            {{#children.count}}
+                            {{#children}}
+                                {{> theme_nova/childnavnode }}
+                            {{/children}}
+                            {{/children.count}}
+                        {{/display}}
+                    {{/children}}
+                </div>
+            </li>
+        {{/secondarynav}}
+
+        {{#sitehomenav}}
+                <li class="nav-item dropdown">
+                <a id="{{key}}" class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{text}}</a>
+                <div class="dropdown-menu">
+                {{#action}}<a class="dropdown-item" href="{{{action}}}">{{{text}}}</a>{{/action}}
+<!--                         {{^action}}<a class="dropdown-item">{{{text}}}</a>{{/action}}
+-->
+                {{#sitehomenav.children}}
+                    {{#display}}
+                        {{^children.count}}
+                            <a class="dropdown-item" href="{{{action}}}">{{{text}}}</a>
+                        {{/children.count}}
+                    {{/display}}
+                {{/sitehomenav.children}}
+
+                {{#children}}
+                    {{#display}}
+                        {{#children.count}}
+                            {{#action}}<a class="dropdown-item" href="{{{action}}}">{{text}}</a>{{/action}}
+                            {{^action}}<a class="dropdown-item">{{text}}</a>{{/action}}
+                            {{#children}}
+                                {{> theme_nova/childnavnode }}
+                            {{/children}}
+                        {{/children.count}}
+                    {{/display}}
+                {{/children}}
+                </div>
+                </li>
+        {{/sitehomenav}}
+    </ul>
+</div>

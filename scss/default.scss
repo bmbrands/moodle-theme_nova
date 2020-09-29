@@ -1,0 +1,317 @@
+// Bootstrap variables
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #1177d1 !default;
+$indigo:  #6610f2 !default;
+$purple:  #613d7c !default;
+$pink:    #e83e8c !default;
+$red:     #d43f3a !default;
+$orange:  #f0ad4e !default;
+$yellow:  #ff7518 !default;
+$green:   #398439 !default;
+$teal:    #20c997 !default;
+$cyan:    #5bc0de !default;
+
+$primary:       $blue !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $orange !default;
+$danger:        $red !default;
+$secondary:     $gray-400 !default;
+
+$info-outline:    #1f7e9a;
+$warning-outline: #a6670e;
+
+// Options
+$enable-rounded: false !default;
+
+// Body
+$body-color:    $gray-800 !default;
+
+// Fonts
+$font-size-base: 0.9375rem !default;
+$headings-font-weight:   300 !default;
+
+// Navbar
+$navbar-dark-hover-color:           rgba($white, 1) !default;
+$navbar-light-hover-color:          rgba($black, .9) !default;
+
+// Breadcrumbs
+$breadcrumb-padding-y:              .25rem !default;
+$breadcrumb-padding-x:              0 !default;
+$breadcrumb-item-padding:           .5rem !default;
+$breadcrumb-margin-bottom:          0 !default;
+$breadcrumb-bg:                     transparent !default;
+$breadcrumb-divider: "/" !default;
+$breadcrumb-divider-rtl: "/" !default;
+
+// Floating elements positions
+$gototop-bottom-position: 50px !default;
+
+// Alerts
+$alert-border-width:                0 !default;
+
+$card-group-margin: .25rem;
+
+// Custom control size
+$custom-control-indicator-size: 1.25rem;
+
+// stylelint-disable
+$theme-colors: () !default;
+$theme-colors: map-merge((
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+), $theme-colors);
+// stylelint-enable
+
+// Import FontAwesome.
+@import "../../boost/scss/fontawesome";
+
+// Import All of Bootstrap
+@import "../../boost/scss/bootstrap";
+
+// Import Core moodle CSS
+@import "../../boost/scss/moodle";
+
+/*
+ * Pop-in Hover effects
+ */
+@mixin transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+
+@mixin backface-visibility($visibility) {
+  -webkit-backface-visibility: $visibility;
+     -moz-backface-visibility: $visibility;
+          backface-visibility: $visibility;
+}
+
+/*
+ * Scale 3d
+ */
+@mixin scale3d($x, $y, $z) {
+  -webkit-transform: scale3d($x, $y, $z);
+  -moz-transform: scale3d($x, $y, $z);
+  -ms-transform: scale3d($x, $y, $z);
+  -o-transform: scale3d($x, $y, $z);
+  transform: scale3d($x, $y, $z);
+}
+
+@mixin hover-pop($background: "rgba(0,0,0,0.5)", $radius: 0, $duration: 250ms, $zindex: 0) {
+    position: relative;
+    &:before {
+        left: 0;
+        top: 0;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        @include scale3d(0,0,0);
+        @include transition(all);
+        @include transition-duration($duration);
+        @include backface-visibility(hidden);
+        background-color: $background;
+        z-index: $zindex;
+        border-radius: $radius;
+        opacity: 0;
+    }
+    &:hover {
+        &:before {
+            @include scale3d(1,1,1);
+            opacity: 1;
+        }
+    }
+}
+
+body {
+    &:not(.drawer-open-left) #nav-drawer {
+        .iconcontainer {
+            @include hover-pop(rgba(0,0,0,0.1), 0, 100ms, 0);
+        }
+        .iconcontainer.active {
+            background-color: rgba(0,0,0,0.1);
+        }
+    }
+}
+
+.navbar {
+    max-height: 50px;
+}
+
+// Our navbar looks different from Boost just to give this theme some identitiy.
+nav.fixed-top {
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
+    padding: 0;
+}
+
+// This is to allow the hover pop to work.
+.popover-region.collapsed .nav-link.popover-region-toggle,
+.popover-region .nav-link.popover-region-toggle {
+    &:before,
+    &:after {
+        border: 0;
+        right: inherit;
+        display: block;
+    }
+}
+
+.navbar.fixed-top .btn.nav-link {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    padding: 1.2rem 1.05rem;
+    border: 0;
+    position: relative;
+    width: auto;
+    & > .icon {
+        margin-right: 0;
+    }
+    @include hover-pop(rgba(0,0,0,0.1), 0, 100ms, 0);
+}
+
+
+// Front page available courses. This is a custom feature of this theme.
+.card-deck.availablecourses {
+    margin-bottom: 2rem;
+    flex-basis: auto;
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    .card-course-image {
+        display: flex;
+        flex: 1 1 auto;
+        .card-img {
+            display: flex;
+        }
+    }
+    @media (min-width: 480px) {
+        .course-card-img {
+            height: 8rem;
+            width: 8rem;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+    .dashboard-card-footer {
+        padding: 0.8rem;
+    }
+}
+
+.button-single-icon .icon {
+    margin-right: 0;
+}
+
+// White is boring.
+.path-login {
+    @include gradient-bg($primary);
+}
+
+// Replace this hard coded image with something more fun
+.bg-login-image {
+    background: url(https://source.unsplash.com/K4mSJ7kc0As/600x800);
+    background-position: center;
+    background-size: cover;
+}
+
+// Reset footer styles.
+.path-login #page-footer.bg-dark.text-light {
+    background-color: transparent !important;
+}
+
+// Preset CSS
+[data-region="drawer"] {
+    padding: 0;
+    background-color: $gray-200;
+    .workspace-drawer-list .drawer-item {
+        line-height: 2.5rem;
+        min-height: 2.5rem;
+        height: auto;
+        color: $gray-700;
+        text-decoration: none;
+        &:hover {
+            color: $gray-800;
+        }
+        .icon {
+            font-size: 1.2rem;
+            line-height: 24px;
+            width: 24px;
+            height: 24px;
+            margin: 13px;
+            position: relative;
+
+        }
+        .navname {
+            display: inline;
+        }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    body:not(.notloggedin) {
+        margin-left: 50px;
+    }
+
+    body.drawer-open-left {
+        margin-left: 285px;
+        .nav-drawer-tooltips {
+            display: none;
+        }
+    }
+
+    [data-region="drawer"] {
+        position: fixed;
+        width: $drawer-width;
+        top: $fixed-header-y;
+        height: calc(100% - #{$navbar-height});
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: $zindex-dropdown - 1;
+        transition: width 0.5s ease, left 0.5s ease;
+        left: 0;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &.closed {
+            width: 50px;
+        }
+    }
+
+    #nav-drawer.closed {
+        left: 0;
+        .drawer-item.type-30 {
+            display: none;
+        }
+    }
+}
+
+
+
+$enable-unborder: true;
+@if $enable-unborder {
+    #region-main {
+        border: 0;
+    }
+}
+
+
+.contextheader .bgicon {
+    background-position: center;
+    background-size: cover;
+}
+

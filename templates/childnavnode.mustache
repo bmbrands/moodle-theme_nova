@@ -1,0 +1,14 @@
+{{#display}}
+    {{#action}}
+        <a class="dropdown-item {{#isactive}}active{{/isactive}}" href="{{{action}}}">{{{text}}}</a>
+    {{/action}}
+    {{^action}}
+        <a class="dropdown-item">{{{text}}}</a>
+
+    {{/action}}
+    {{#children.count}}
+        {{#children}}
+            {{> theme_nova/childnavnode }}
+        {{/children}}
+    {{/children.count}}
+{{/display}}
