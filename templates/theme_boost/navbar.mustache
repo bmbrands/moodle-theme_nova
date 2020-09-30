@@ -17,13 +17,15 @@
 {{!
     Page navbar.
 }}
-<nav class="fixed-top navbar navbar-light navbar-expand moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+<nav class="fixed-top bg-white navbar navbar-light navbar-expand moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     <div class="container-fluid p-0 d-flex flex-nowrap align-items-stretch">
+        {{# output.hasdrawer }}
         <div data-region="drawer-toggle" class="mr-2">
             <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link mr-1" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
         </div>
+        {{/ output.hasdrawer }}
 
-        <a href="{{{ config.wwwroot }}}" class="navbar-brand aabtn {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
+        <a href="{{{ config.wwwroot }}}" class="navbar-brand aabtn {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }} {{^ output.hasdrawer }}ml-3{{/ output.hasdrawer }}
             {{^ output.should_display_navbar_logo }}
                 d-none d-sm-inline-flex align-items-center
             {{/ output.should_display_navbar_logo }}
@@ -43,11 +45,11 @@
             {{{ output.page_heading_menu }}}
         </ul>
         <ul class="nav navbar-nav ml-auto">
-            <li class="d-none d-lg-block">
+            <li class="d-flex align-items-center">
                 {{{ output.search_box }}}
             </li>
             <!-- navbar_plugin_output -->
-            <li class="nav-item">
+            <li class="nav-item d-flex">
                 {{{ output.navbar_plugin_output }}}
             </li>
             <!-- user_menu -->

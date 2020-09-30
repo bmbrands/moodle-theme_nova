@@ -41,6 +41,10 @@ class core_renderer extends boost_core_renderer {
         return isloggedin();
     }
 
+    public function hasdrawer() {
+        return isloggedin();
+    }
+
     public function navbar() {
         global $DB, $OUTPUT;
 
@@ -106,6 +110,10 @@ class core_renderer extends boost_core_renderer {
                 $contextheader->contextupname = $course->fullname;
                 $contextheader->icon = $module->get_icon_url();
 
+                $secondarynav = new \theme_nova\secondary_navigation_activity($this->page);
+                $secondarynav->initialise($cm->modname);
+                $header->secondarynav = $secondarynav;
+
                 $header->contextheader = $this->render_from_template('theme_nova/contextheader', $contextheader);
             }
         }
@@ -156,7 +164,6 @@ class core_renderer extends boost_core_renderer {
             $contextheader->contextuplink = $categoryurl;
             $contextheader->contextupname = $category->name;
             $contextheader->bgicon = $courseexport->courseimage;
-
 
             $secondarynav = new \theme_nova\secondary_navigation($this->page);
             $secondarynav->initialise();

@@ -218,7 +218,6 @@ class secondary_navigation extends navigation_node_collection {
                         }
                     }
                 }
-
             }
         }
     }

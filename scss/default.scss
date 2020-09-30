@@ -39,7 +39,7 @@ $enable-rounded: false !default;
 $body-color:    $gray-800 !default;
 
 // Fonts
-$font-size-base: 0.9375rem !default;
+$font-size-base: 0.9rem !default;
 $headings-font-weight:   300 !default;
 
 // Navbar
@@ -170,7 +170,8 @@ nav.fixed-top {
     }
 }
 
-.navbar.fixed-top .btn.nav-link {
+.navbar.fixed-top .btn.nav-link,
+.navbar.fixed-top .btn.btn-open {
     display: flex;
     align-self: stretch;
     align-items: center;
