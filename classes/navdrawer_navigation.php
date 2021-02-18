@@ -107,6 +107,7 @@ class navdrawer_navigation extends navigation_node_collection {
         if ($admin) {
             $flat = new \flat_navigation_node($admin, 0);
             $flat->set_showdivider(true, get_string('sitesettings'));
+            $flat->url = new moodle_url('/admin/search.php');
             $flat->key = 'sitesettings';
             $flat->icon = new \pix_icon('t/preferences', '');
             $this->add($flat);

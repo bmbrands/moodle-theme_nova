@@ -19,30 +19,52 @@
 }}
 <nav class="fixed-top bg-white navbar navbar-light navbar-expand moodle-has-zindex" aria-label="{{#str}}sitemenubar, admin{{/str}}">
     <div class="container-fluid p-0 d-flex flex-nowrap align-items-stretch">
-        {{# output.hasdrawer }}
-        <div data-region="drawer-toggle" class="mr-2">
-            <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link mr-1" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
-        </div>
-        {{/ output.hasdrawer }}
 
-        <a href="{{{ config.wwwroot }}}" class="navbar-brand aabtn {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }} {{^ output.hasdrawer }}ml-3{{/ output.hasdrawer }}
+        <a href="{{{ config.wwwroot }}}" class="ml-2 navbar-brand aabtn {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }} {{^ output.hasdrawer }}ml-3{{/ output.hasdrawer }}
             {{^ output.should_display_navbar_logo }}
                 d-none d-sm-inline-flex align-items-center
             {{/ output.should_display_navbar_logo }}
                 ">
             {{# output.should_display_navbar_logo }}
-                <span class="logo d-none d-sm-inline-flex align-items-center">
+                <span class="logo d-inline-flex align-items-center">
                     <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
                 </span>
             {{/ output.should_display_navbar_logo }}
-            <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+            <span class="site-name d-inline-flex">{{{ sitename }}}</span>
         </a>
 
-        <ul class="navbar-nav d-none d-md-flex">
-            <!-- custom_menu -->
+        <div class="dropdown my-2 d-sm-none">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="primarynavbutton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Home
+          </button>
+          <div class="dropdown-menu" aria-labelledby="primarynavbutton">
+            <a class="dropdown-item" href="{{{ config.wwwroot }}}">{{#str}}home{{/str}}</a>
+            <a class="dropdown-item" href="{{{ config.wwwroot }}}/my">{{#str}}myhome{{/str}}</a>
+            <a class="dropdown-item" href="{{{ config.wwwroot }}}/course">{{#str}}mycourses{{/str}}</a>
+            <a class="dropdown-item" href="{{{ config.wwwroot }}}/admin/search.php">{{#str}}administrationsite{{/str}}</a>
+          </div>
+        </div>
+
+        <ul class="navbar-nav my-2 d-none d-sm-flex">
+            <li class="nav-item">
+                <a class="nav-link" href="{{{ config.wwwroot }}}">
+                    {{#str}}home{{/str}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{{ config.wwwroot }}}/my">
+                    {{#str}}myhome{{/str}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{{ config.wwwroot }}}/course">
+                    {{#str}}mycourses{{/str}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{{ config.wwwroot }}}/admin/search.php">{{#str}}administrationsite{{/str}}</a>
+            </li>
             {{{ output.custom_menu }}}
-            <!-- page_heading_menu -->
-            {{{ output.page_heading_menu }}}
         </ul>
         <ul class="nav navbar-nav ml-auto">
             <li class="d-flex align-items-center">
@@ -60,4 +82,3 @@
         <!-- search_box -->
     </div>
 </nav>
-

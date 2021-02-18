@@ -38,7 +38,7 @@ defined('MOODLE_INTERNAL') || die();
  * @return bool
  */
 function theme_nova_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
-    if ($context->contextlevel == CONTEXT_SYSTEM && 
+    if ($context->contextlevel == CONTEXT_SYSTEM &&
             ($filearea === 'loginbackgroundimage' || $filearea === 'themelogo' || $filearea === 'frontpageimage')) {
         $theme = theme_config::load('nova');
         // By default, theme files must be cache-able by both browsers and proxies.

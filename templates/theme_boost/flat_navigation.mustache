@@ -61,35 +61,27 @@
     {{#showdivider}}
 </nav>
 <nav class="workspace-drawer-list">
+    <ul class="list-group">
     {{/showdivider}}
     {{#action}}
-    <a class="drawer-item type-{{type}} {{#isactive}}active{{/isactive}}" href="{{{action}}}" data-key="{{key}}" data-isexpandable="{{isexpandable}}" data-indent="{{get_indent}}" data-showdivider="{{showdivider}}" data-type="{{type}}" data-nodetype="{{nodetype}}" data-collapse="{{collapse}}" data-forceopen="{{forceopen}}" data-isactive="{{isactive}}" data-hidden="{{hidden}}" data-preceedwithhr="{{preceedwithhr}}" {{#parent.key}}data-parent-key="{{.}}"{{/parent.key}}>
-        <div class="m-l-{{get_indent}}">
-            <div class="d-flex align-items-center">
-            {{#icon.pix}}
-                <span class="iconcontainer {{#isactive}}active{{/isactive}}" data-toggle="tooltip" data-placement="right" title="{{{text}}}" data-container=".nav-drawer-tooltips">
-                    {{#pix}}{{{icon.pix}}}, {{{icon.component}}}, {{{icon.alt}}}{{/pix}}
-                </span>
-            {{/icon.pix}}
-                <span class="navname text-truncate {{#isactive}}font-weight-bold{{/isactive}}">{{{text}}}</span>
-            </div>
+    <li class="list-group-item">
+        <a class="type-{{type}} {{#isactive}}active{{/isactive}}" href="{{{action}}}" data-key="{{key}}" data-isexpandable="{{isexpandable}}" data-indent="{{get_indent}}" data-showdivider="{{showdivider}}" data-type="{{type}}" data-nodetype="{{nodetype}}" data-collapse="{{collapse}}" data-forceopen="{{forceopen}}" data-isactive="{{isactive}}" data-hidden="{{hidden}}" data-preceedwithhr="{{preceedwithhr}}" {{#parent.key}}data-parent-key="{{.}}"{{/parent.key}}>
+        <div class="d-flex align-items-center">
+            <span class="navname text-truncate {{#isactive}}font-weight-bold{{/isactive}}">{{{text}}}</span>
         </div>
-    </a>
+        </a>
+    </li>
     {{/action}}
     {{^action}}
-    <div class="drawer-item type-{{type}}" data-key="{{key}}" data-isexpandable="{{isexpandable}}" data-indent="{{get_indent}}" data-showdivider="{{showdivider}}" data-type="{{type}}" data-nodetype="{{nodetype}}" data-collapse="{{collapse}}" data-forceopen="{{forceopen}}" data-isactive="{{isactive}}" data-hidden="{{hidden}}" data-preceedwithhr="{{preceedwithhr}}" {{#parent.key}}data-parent-key="{{.}}"{{/parent.key}}>
-        <div class="m-l-{{get_indent}}">
+    <li class="list-group-item">
+        <div class="type-{{type}}" data-key="{{key}}" data-isexpandable="{{isexpandable}}" data-indent="{{get_indent}}" data-showdivider="{{showdivider}}" data-type="{{type}}" data-nodetype="{{nodetype}}" data-collapse="{{collapse}}" data-forceopen="{{forceopen}}" data-isactive="{{isactive}}" data-hidden="{{hidden}}" data-preceedwithhr="{{preceedwithhr}}" {{#parent.key}}data-parent-key="{{.}}"{{/parent.key}}>
             <div class="d-flex">
-            {{#icon.pix}}
-                <span class="iconcontainer">
-                    {{#pix}}{{{icon.pix}}}, {{{icon.component}}}, {{{icon.alt}}}{{/pix}}
-                </span>
-            {{/icon.pix}}
                 <span class="navname text-truncate">{{{text}}}</span>
             </div>
         </div>
-    </div>
+    </li>
     {{/action}}
+    </ul>
 {{/ flatnavigation }}
 </nav>
 </div>

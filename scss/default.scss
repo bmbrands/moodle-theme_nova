@@ -78,6 +78,9 @@ $theme-colors: map-merge((
 ), $theme-colors);
 // stylelint-enable
 
+
+$drawer-width: 225px;
+
 // Import FontAwesome.
 @import "../../boost/scss/fontawesome";
 
@@ -134,17 +137,6 @@ $theme-colors: map-merge((
         &:before {
             @include scale3d(1,1,1);
             opacity: 1;
-        }
-    }
-}
-
-body {
-    &:not(.drawer-open-left) #nav-drawer {
-        .iconcontainer {
-            @include hover-pop(rgba(0,0,0,0.1), 0, 100ms, 0);
-        }
-        .iconcontainer.active {
-            background-color: rgba(0,0,0,0.1);
         }
     }
 }
@@ -248,15 +240,6 @@ nav.fixed-top {
         &:hover {
             color: $gray-800;
         }
-        .icon {
-            font-size: 1.2rem;
-            line-height: 24px;
-            width: 24px;
-            height: 24px;
-            margin: 13px;
-            position: relative;
-
-        }
         .navname {
             display: inline;
         }
@@ -265,19 +248,14 @@ nav.fixed-top {
 
 @include media-breakpoint-up(sm) {
     body:not(.notloggedin) {
-        margin-left: 50px;
-    }
-
-    body.drawer-open-left {
-        margin-left: 285px;
-        .nav-drawer-tooltips {
-            display: none;
-        }
+        margin-left: $drawer-width;
     }
 
     [data-region="drawer"] {
-        position: fixed;
+        display: none;
+        position: absolute;
         width: $drawer-width;
+        padding-top: 60px;
         top: $fixed-header-y;
         height: calc(100% - #{$navbar-height});
         overflow-y: auto;
@@ -301,7 +279,9 @@ nav.fixed-top {
     }
 }
 
-
+body {
+    margin-left: 0 !important;
+}
 
 $enable-unborder: true;
 @if $enable-unborder {
@@ -315,4 +295,3 @@ $enable-unborder: true;
     background-position: center;
     background-size: cover;
 }
-
