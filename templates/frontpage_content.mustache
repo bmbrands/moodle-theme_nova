@@ -1,0 +1,86 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_nova/frontpage_content
+
+    This template renders the header.
+
+    Example context (json):
+    {
+    }
+}}
+<div class="mastheadimage" style="background-image: url({{{ output.theme_header_image }}});">
+    <div class="homeheading container-fluid text-white">
+        {{#headertext}}
+            <h1 class="text-white text-center">{{{ headertext}}}</h1>
+        {{/headertext}}
+        <div class="d-flex w-100">
+            {{#frontpagesub}}
+            <div class="text-large">{{{ frontpagesub }}}</div>
+            {{/frontpagesub}}
+            {{#settingsmenu}}
+            <div class="ml-auto p-2 bg-light border-0">
+                {{{ settingsmenu }}}
+            </div>
+            {{/settingsmenu}}
+        </div>
+    </div>
+    <div class="homesearch pt-2">
+        <form class="mform w-100 container-fluid d-flex align-items-center" action="{{{wwwroot}}}/local/search/index.php">
+            <div class="col-12 col-md-8 mx-auto input-group bg-gray030 p-3">
+                <input
+                    type="text"
+                    name="search"
+                    class="form-control form-control-lg font-weight-normal border-0"
+                    placeholder="{{#str}} frontpage:search, theme_nova {{/str}}"
+                    aria-label="{{#str}} frontpage:search, theme_nova {{/str}}"
+                    data-region="search-input"
+                >
+                <input
+                    type="hidden"
+                    name="context"
+                    value="{{{output.pagecontextid}}}"
+                >
+                <input
+                    type="hidden"
+                    name="page"
+                    value="search"
+                >
+                <input
+                    type="hidden"
+                    name="showcatid"
+                    value=-1
+                >
+                <div class="input-group-append">
+                    <button
+                        class="btn btn-blue030 btn-lg"
+                        type="submit"
+                        data-action="search"
+                    >
+                        <span data-region="search-icon-container">
+                            {{#pix}} a/search, core {{/pix}}
+                        </span>
+                        <span class="hidden" data-region="loading-icon-container">
+                            {{> core/loading }}
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

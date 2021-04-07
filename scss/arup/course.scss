@@ -1,0 +1,482 @@
+#section-0 ul.section {
+    padding-left: 0;
+}
+
+.course-content .single-section {
+    margin-top: 0;
+}
+.avtext .avheading {
+    border-left: 2px solid $green020;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+#completionprogressid {
+    display: none;
+}
+// This ensures the advert can be shown full screen on mobile.
+.summary > .no-overflow {
+    overflow: visible;
+}
+
+.section .summary,
+.activity.type-label {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@mixin activity-variant($color, $background) {
+    border-right: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    border-radius: 4px;
+    border-left: 4px solid $color;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    .activityinstance a {
+        color: $text;
+    }
+    .activityicon {
+        filter: grayscale(100%);
+    }
+}
+
+.iconlarge .icon {
+    font-size: 1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    vertical-align: top;
+}
+
+.editing .course-content  ul.aruponepage .section .activity .editing_move {
+    position: relative;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.number.sectionnumber {
+    width: 35px;
+    height: 35px;
+}
+
+.categories-container {
+
+    .imagehandler_wrapper, {
+        height: 100px;
+        width: 100px;
+        background-size: cover;
+        background-position: center center;
+    }
+    &.categories-view  .imagehandler_wrapper {
+        height: 200px;
+        width: auto;
+    }
+    @include media-breakpoint-up(sm) {
+        .imagehandler_wrapper {
+            height: 200px;
+            width: auto;
+        }
+    }
+
+    .categorycard {
+        .card-footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            bottom: 0;
+            min-height: 80px;
+            h3 {
+                margin: 0;
+                color: $white;
+            }
+        }
+        &:hover,
+        &:focus {
+            .card-footer {
+                text-decoration: none;
+                background-color: rgba(45, 143, 230, 0.8);
+            }
+        }
+    }
+}
+
+// The right hand menu chapters.
+
+.showchaptersaction {
+    position: fixed;
+    right: 5px;
+    bottom: 50px;
+    z-index: 100;
+}
+
+.chapters {
+    .bordered {
+        border: 1px solid $border-color;
+    }
+    &.methodology_classroom .active .bordered {
+        border-color: $method-classroom;
+    }
+
+    &.methodology_virtualclassroom .active .bordered {
+        border-color: $method-virtualclassroom;
+    }
+
+    &.methodology_elearning .active .bordered {
+        border-color: $method-elearning;
+    }
+
+    &.methodology_learningburst .active .bordered {
+        border-color: $method-learningburst;
+    }
+
+    &.methodology_programmes .active .bordered {
+        border-color: $method-masters;
+
+    }
+    &.methodology_linkedinlearning .active .bordered {
+        border-color: $method-linkedin;
+
+    }
+    &.methodology_other .active .bordered {
+        border-color: $method-other;
+    }
+}
+
+
+@include media-breakpoint-down(md) {
+    .chapters {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 15000;
+        transform: scale(0);
+        transition: transform 0s .195s,-webkit-transform 0s .195s;
+        &.shownav {
+            transform: scale(1) translateZ(0);
+            transition: transform 0s,-webkit-transform 0s;
+            .backdrop {
+                opacity: .5;
+                transition: opacity .225s,transform 0s,-webkit-transform 0s;
+            }
+            .navigationwrapper {
+                transform: translateX(-100%);
+                transition: transform .225s,-webkit-transform .225s;
+            }
+        }
+        .backdrop {
+            opacity: 0;
+            z-index: 99;
+            left: 0;
+            display: block;
+            width: 100%;
+            background-color: #2d2d2d;
+            position: absolute;
+            top: 0;
+            height: 100%;
+        }
+        .navigationwrapper {
+            background-color: #fff;
+            outline-width: 0;
+            left: 100%;
+            width: calc(100% - 50px);
+            z-index: 15000;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            padding: 1rem 0.5rem 0 1.5rem;
+            overflow-y: scroll;
+        }
+        .closenav {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            z-index: 100;
+        }
+    }
+    .sectionnavigation {
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        z-index: 10000;
+        bottom: 0;
+        padding: 0.5rem;
+        background-color: #fff;
+        box-shadow: 0 -2px 4px rgba(0,0,0,.08)
+    }
+}
+@include media-breakpoint-up(lg) {
+    .chapters {
+        position: sticky; top: 100px
+    }
+    .showchaptersaction {
+        display: none;
+    }
+}
+
+body.pagelayout-course.format-aruponepage:not(.editing) #section-0 .sectionname {
+    display: none !important;
+    padding-top: 0;
+}
+
+body.pagelayout-course.format-aruponepage {
+    height: auto;
+
+    #region-main {
+        padding: 0;
+        overflow-y: initial;
+        overflow-x: initial;
+    }
+
+    :target::before {
+        content: " ";
+        display: block;
+        height: 80px;
+        margin-top: -80px;
+        width: 1px;
+        pointer-events: none;
+    }
+    #section-0:target::before {
+        content: unset;
+    }
+    #section-0 .sectionname {
+        padding-top: 1rem;
+    }
+    // Erases the first section border top
+    #section-0 {
+        .section-header {
+            border-top: 0 !important; /* stylelint-disable-line declaration-no-important */
+        }
+    }
+
+    .btn-startcourse {
+        display: flex;
+        padding: 0.2rem;
+        .starticon {
+            padding: 0.5rem 0.8rem;
+            font-size: 1.1rem;
+            color: $primary;
+            background-color: white;
+        }
+        .text {
+            padding: 0.5rem;
+        }
+    }
+
+
+
+    // Background colour needs to be changed into a variable.
+    .sectionprogress.progress {
+        height: 0.3rem;
+        border-radius: 0;
+        width: 100px;
+    }
+
+
+
+    .list-group .list-group-item {
+        border-left: 0;
+        border-right: 0;
+        background-color: #f1f2f2;
+        &:first-child {
+            border-top: 0;
+        }
+        .number {
+            background-color: #E6E7E8;
+        }
+        &.active {
+            background-color: $white;
+            color: inherit;
+            .number {
+                background-color: $white;
+            }
+        }
+    }
+
+    // positioned to the right of each section and activity.
+    .editoptions {
+        i {
+            color: $primary;
+            font-size: 1.2rem;
+        }
+    }
+    .section_action_menu .caret,
+    .section_action_menu .dropdown-toggle::after {
+        display: none;
+    }
+
+    .section-modchooser-link {
+        @include button-variant($primary, $primary);
+    }
+
+    .quickediticon {
+        display: inline-block;
+        i {
+            color: $primary;
+            font-size: 1.2rem;
+        }
+    }
+
+    // remove the border bottom from the last paragraph.
+    .no-overflow {
+        padding: 0;
+        display: inline-block;
+        min-height: auto;
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .section.main {
+        list-style: none;
+        margin-bottom: 2rem;
+        border-bottom: 0;
+        &.hidden .activity:not(.unstyled) {
+            border-left: 4px solid $border-color;
+        }
+    }
+    // Default overflow on card elements hides the edit dialogue in Bootstrap 4.3.1+.
+    .section {
+        overflow: initial;
+    }
+
+    // Hide the added arrow after dropdowns.
+    .section .actions .dropdown-toggle::after {
+        display: none;
+    }
+
+    .activity .availabilityinfo {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .movesection,
+    .movemodule,
+    .quickeditlink {
+        color: $gray060;
+    }
+
+    .quickeditlink .icon {
+        font-size: 16px;
+    }
+
+    h3.sectionname,
+    h3.sectionname a {
+        color: $headings-color;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .addsectionwrapper {
+        background-color: $gray010;
+        padding: 41px 5px;
+        text-align: center;
+        .addsectionicon {
+            font-size: 3.5rem;
+            color: $gray040;
+        }
+    }
+
+    .dropactivity {
+        display: none;
+    }
+
+    .section.movemodule .dropactivity {
+        display: none;
+    }
+
+    .nomodules .dropactivity {
+        display: block;
+    }
+
+    div.aruponepage-group-item:not(.unstyled):hover {
+        background-color: $gray010;
+    }
+
+    .module-content .afterlink {
+        overflow-y: auto;
+    }
+
+    .activity:not(.unstyled) {
+        margin: 1rem 0;
+        > .module-content {
+            padding: 1rem;
+        }
+    }
+    .activity .instancename {
+        font-family: $headings-font-family;
+        font-size: 1rem;
+    }
+    img.activityicon {
+        height: 32px;
+        width: 32px;
+        vertical-align: middle;
+        margin-right: 1.5rem;
+    }
+
+
+    .formataruponepagecontent.methodology_virtualclassroom .activity:not(.unstyled) {
+        @include activity-variant($method-virtualclassroom, lighten($method-virtualclassroom, 38%));
+    }
+
+    .formataruponepagecontent.methodology_classroom .activity:not(.unstyled) {
+        @include activity-variant($method-classroom, lighten($method-classroom, 38%));
+    }
+
+    .formataruponepagecontent.methodology_elearning .activity:not(.unstyled) {
+        @include activity-variant($method-elearning, lighten($method-elearning, 30%));
+    }
+
+    .formataruponepagecontent.methodology_learningburst .activity:not(.unstyled) {
+        @include activity-variant($method-learningburst, lighten($method-learningburst, 52%));
+    }
+
+    .formataruponepagecontent.methodology_programmes .activity:not(.unstyled) {
+        @include activity-variant($method-masters, lighten($method-masters, 24%));
+
+    }
+    .formataruponepagecontent.methodology_linkedinlearning .activity:not(.unstyled) {
+        @include activity-variant($method-linkedin, lighten($method-linkedin, 46%));
+    }
+    .formataruponepagecontent.methodology_other .activity:not(.unstyled) {
+        @include activity-variant($method-other, lighten($method-other, 40%));
+    }
+
+    .activity.type-arupenrol {
+        .completion {
+            display: none;
+        }
+    }
+}
+
+body.path-mod-forum.format-aruponepage {
+    .forumsearch {
+        text-align: right;
+        width: 100%;
+        .form-inline {
+            display: inline-block;
+        }
+    }
+}
+
+// Quiz popper menu height is related to the region-main height.
+body.path-mod-quiz.format-aruponepage {
+    @include media-breakpoint-up(sm) {
+        #region-main {
+            min-height: 650px;
+        }
+    }
+    // We need this style or the quiz navigation menu won't not readable.
+    .qn_buttons {
+        .qnbutton {
+            color: $text;
+        }
+    }
+}

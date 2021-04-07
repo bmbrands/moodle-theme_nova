@@ -1,0 +1,86 @@
+@import "../../boost/scss/bootstrap/functions";
+@import "../../boost/scss/bootstrap/variables";
+@import "../../boost/scss/bootstrap/mixins";
+@import "../scss/arup/variables";
+@import "../scss/arup/advert";
+
+ion-app {
+    .toolbar-background-md {
+        background-color: $primary010;
+    }
+    .invisible-mobile {
+        opacity: 0;
+    }
+    .hidden-mobile-app {
+        display: none !important;
+    }
+    .d-mobile-app {
+        display: block !important;
+    }
+    .avheading {
+        font-size: 2rem !important;
+    }
+    .arupavcminfo {
+        .h-100 {
+            height: 100%!important;
+        }
+        .w-100 {
+            width: 100%!important;
+        }
+        .position-absolute {
+            position: absolute!important;
+        }
+        .d-block {
+            display: block!important;
+        }
+        .h-100 {
+            height: 100%!important;
+        }
+        .flex-column {
+            flex-direction: column!important;
+        }
+        .position-relative {
+            position: relative!important;
+        }
+        .align-items-center {
+            align-items: center!important;
+        }
+        .d-flex {
+            display: flex!important;
+        }
+
+        .no-gutters>.col, .no-gutters>[class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .col-6, .col-xs-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        .no-gutters {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .pl-3, .px-3 {
+            padding-left: 1rem!important;
+        }
+
+        .avblock {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .imagehandler_wrapper {
+            overflow: hidden;
+            .imagehandler {
+                min-height: 100%;
+                background-size: cover;
+                background-position: center center;
+            }
+        }
+    }
+}

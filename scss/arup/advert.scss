@@ -1,0 +1,154 @@
+@mixin advert-variant($color, $background) {
+    .avblock {
+        border-top: 1px solid $color;
+    }
+    .avtext .avheading {
+        border-color: $color;
+    }
+    .av_metadata_bg {
+        background-color: rgba($color, 0.1);
+    }
+    .av_metadata_border {
+        border-top: 2px solid $color;
+    }
+    .adverticon-container {
+        background-color: $color;
+    }
+    .separator {
+        border-right: 2px solid $color;
+    }
+    .timeicon .icon {
+        color: $color;
+    }
+}
+
+@mixin heading-variant($color) {
+    &.heading {
+        padding: 0.4rem 0 .1rem 0.6rem;
+        margin-bottom: 2rem;
+        border-left: 4px solid $color;
+    }
+}
+
+.arupavcminfo {
+    &.linkcard {
+        color: $text;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .arupav_title {
+        display: none;
+    }
+
+    .adverticon-container {
+        width: 40px;
+        height: 40px;
+        padding: 0.1rem;
+    }
+
+    .av_metadata {
+        padding: 1rem;
+    }
+
+    @include media-breakpoint-up(sm) {
+        .avtext .avheading {
+            border-left: 4px solid $green020;
+        }
+    }
+
+    &.methodology_classroom {
+        @include advert-variant($method-classroom, lighten($method-classroom, 38%));
+    }
+
+    &.methodology_virtualclassroom {
+        @include advert-variant($method-virtualclassroom, lighten($method-virtualclassroom, 38%));
+    }
+
+    &.methodology_elearning {
+        @include advert-variant($method-elearning, lighten($method-elearning, 30%));
+    }
+
+    &.methodology_learningburst {
+        @include advert-variant($method-learningburst, lighten($method-learningburst, 44%));
+    }
+
+    &.methodology_programmes {
+        @include advert-variant($method-masters, lighten($method-masters, 35%));
+
+    }
+    &.methodology_linkedinlearning {
+        @include advert-variant($method-linkedin, lighten($method-linkedin, 46%));
+    }
+    &.methodology_other {
+        @include advert-variant($method-other, lighten($method-other, 40%));
+    }
+}
+
+.m-classroom {
+    @include heading-variant($method-classroom);
+}
+.m-virtualclassroom {
+    @include heading-variant($method-virtualclassroom);
+}
+.m-elearning {
+    @include heading-variant($method-elearning);
+}
+.m-learningburst {
+    @include heading-variant($method-learningburst);
+}
+.m-programmes {
+    @include heading-variant($method-masters);
+}
+.m-linkedinlearning {
+    @include heading-variant($method-linkedin);
+}
+.m-other {
+    @include heading-variant($method-other);
+}
+
+.pagelayout-course {
+    .arupavcminfo {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+        .adverticon-container {
+            width: 60px;
+            height: 60px;
+            padding: 0.3rem;
+        }
+        .avtext {
+            flex: 1 1 100%;
+        }
+        .avblock {
+            flex: 1 1 100%;
+            margin-bottom: 1rem;
+        }
+        .imagehandler_wrapper {
+            height: 100%;
+        }
+        @include media-breakpoint-up(sm) {
+            margin-top: 2rem;
+            flex-direction: row;
+            .avblock {
+                flex: 0 1 40%;
+                order: 2;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .avtext {
+                flex: 0 1 60%;
+                order: 1;
+                padding-right: 20px;
+                .avheading {
+                    padding: 0.4rem 0 .1rem 0.6rem;
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+}
+
+body.ie11.pagelayout-course .no-overflow {
+    display: block;
+}

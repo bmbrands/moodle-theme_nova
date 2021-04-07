@@ -1,0 +1,291 @@
+.block_panels {
+    .backgroundpanel {
+        display: none;
+    }
+    @include media-breakpoint-up(lg) {
+        .backgroundpanel {
+            width: calc(100vw - 50px);
+            position: absolute;
+            display: flex;
+            top: 0;
+            left: 50%;
+            right: 50%;
+            margin-left: calc(-50vw);
+            margin-right: -50vw;
+            z-index: 0;
+            .image.large {
+                background-size: contain;
+                background-repeat: no-repeat;
+                height: 100%;
+            }
+            .left .image.large {
+                background-position: left bottom;
+            }
+            .right .image.large {
+                background-position: right top;
+            }
+            .image.large .hideinblock {
+                display: none;
+            }
+        }
+        .foreground {
+            z-index: 1;
+        }
+    }
+}
+
+// Toggle icons using standard bootstrap collapse.
+.panel-toggle {
+    .collapsed-icon-container {
+        display: none;
+    }
+    .expanded-icon-container {
+        display: inline-block;
+    }
+
+    &.collapsed {
+        .collapsed-icon-container {
+            display: inline-block;
+        }
+        .expanded-icon-container {
+            display: none;
+        }
+    }
+}
+
+body:not(.editing) {
+    .block_panels {
+        border: 0;
+        .card-header {
+            display: none !important;
+        }
+        .card-body {
+            padding: 0 !important;
+            .card-text {
+                margin: 0 !important;
+                .container-fluid {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+.nodesc .carddesc {
+    display: none;
+}
+
+.lunchandlearn-small {
+    .day {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+}
+
+.lunchandlearn-large {
+    .day {
+        font-size: 4rem;
+        line-height: 1;
+    }
+}
+.carousel-indicators li {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 3px;
+    background-color: rgba(0,0,0,.5);
+    &.active {
+        background-color: rgba(0,0,0,.9);
+    }
+}
+
+.carousel {
+    .prev-next {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        .carousel-prev {
+            position: absolute;
+            left: 0;
+            margin-top: -30px;
+        }
+        .carousel-next {
+            position: absolute;
+            right: 0;
+            margin-top: -30px;
+        }
+    }
+}
+.fadeout-container {
+    position: relative;
+    overflow: hidden;
+    .fadeout {
+        width: 100%;
+        position: absolute;
+        bottom: 0; padding: 10px;
+        // background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+    }
+}
+.all-100 {
+    height: 100%;
+    & > .carousel-item {
+        height: 100%;
+        & > .card {
+            height: 100%;
+            & > .card-body {
+                height: 100%;
+                & > .panellayout {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+#tns1-mw {
+    width: 100%;
+}
+
+.path-local-panels {
+    .addpanelbutton {
+        position: absolute;
+        top: -62px;
+        right: 0;
+    }
+    .editcontrols {
+        .collapseexpand {
+            display: none;
+        }
+        .card-header:empty {
+            display: none;
+        }
+        .card-body {
+            padding: 0.75rem 0.5rem;
+        }
+        .row {
+            margin: 0 -0.25rem 1rem -0.25rem;
+        }
+        transition: width 0.25s;
+        .datasourceconfig,
+        .datasourcetypeselector {
+            .col-md-3,
+            .col-md-9 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .form-autocomplete-selection {
+                margin: 0;
+                min-height: 0;
+            }
+            .col-md-3 {
+                font-weight: 700;
+            }
+            .tag {
+                white-space: normal;
+            }
+        }
+        .editformwrapper {
+            min-width: 200px;
+        }
+        #fgroup_id_buttonar,
+        #fgroup_id_addpanelarray {
+            margin: 0;
+            .col-md-3 {
+                display: none;
+            }
+            .col-md-9 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+        .mform fieldset.collapsible legend {
+            display: none;
+        }
+        .mform fieldset {
+            border: 0;
+            margin: 0;
+        }
+        .mform fieldset:not(.collapsed) {
+            padding: 0.4rem 0.25rem;
+            border: 1px solid $border-color;
+        }
+        [data-region="submitcancel"] {
+            width: 100%;
+            justify-content: center;
+            padding: 0.4rem 0.25rem 0.4rem;
+            border: 1px solid $border-color;
+        }
+        .mform fieldset .col-md-3,
+        .mform fieldset .col-md-9 {
+            padding: 0 5px;
+        }
+    }
+    .image.large {
+        background-image: none !important;
+    }
+
+    .editpanels .card-header {
+        min-height: 51px;
+    }
+
+    div.editpanels .zonecontent:empty {
+        min-height: 150px;
+        border-color: gray;
+        border-style: dashed;
+        margin: 2px;
+    }
+}
+
+.panellayout.video {
+    .video-holder {
+        position: relative;
+        width: 100%;
+        display: inline-block;
+        .overlay {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-60px, -60px);
+            z-index: 1;
+
+        }
+    }
+
+    .image-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: #CCC;
+        .image-holder {
+            background-repeat: no-repeat;
+            background-position: 100% center;
+            margin: 2px auto;
+            top: 0;
+            left: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+    }
+
+    .fa-play-circle {
+        font-size: 60px;
+        line-height: 1;
+        color: white;
+    }
+
+    .kaltura-video-embed-target {
+        position: absolute;
+        top: 0;
+        left: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}

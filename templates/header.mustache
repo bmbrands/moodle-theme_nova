@@ -1,0 +1,97 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_nova/header
+
+    This template renders the header.
+
+    Example context (json):
+    {
+        "contextheader": "context_header_html",
+        "settingsmenu": "settings_html",
+        "hasnavbar": false,
+        "navbar": "navbar_if_available",
+        "courseheader": "course_header_html"
+    }
+
+    Page header.
+}}
+{{#hasheader}}
+<header id="page-header">
+    <div class="w-100">
+        <div class="bg-gray010 page-header-inner {{^contextheader}}border-0 bg-transparent{{/contextheader}}">
+            <div class="container-fluid">
+                {{{notifications}}}
+                <div class="py-4{{^contextheader}}py-2{{/contextheader}}">
+                    <div class="d-flex header-navbar-headingbuttons">
+                        {{#hasnavbar}}
+                            <div id="page-navbar">
+                                {{{navbar}}}
+                            </div>
+                        {{/hasnavbar}}
+                    </div>
+                    <div class="d-flex w-100 header-context-menu pt-4">
+                        {{#image}}
+                        <div class="headerimage mr-2">
+                            {{{image}}}
+                        </div>
+                        {{/image}}
+                        <div class="arup-page-header">
+                            <div class="d-flex">
+                                {{{contextheader}}}
+                                {{#canbookmark}}
+                                    <div id="bookmarkcourse" class="bookmarkcourse d-flex align-items-end" data-course-id="{{courseid}}">
+                                        <button class="btn btn-link position-relative {{#isbookmarked}}d-none{{/isbookmarked}}" data-action="add-bookmark"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{{#str}}bookmarkcourse, theme_nova{{/str}}"
+                                            >
+                                            {{#pix}} a/bookmark, theme, {{#str}}bookmarkcourse, theme_nova{{/str}}{{/pix}}
+                                        </button>
+                                        <button class="btn btn-link position-relative {{^isbookmarked}}d-none{{/isbookmarked}}" data-action="remove-bookmark"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="{{#str}}bookmarkcourseremove, theme_nova{{/str}}"
+                                        >
+                                            {{#pix}} a/removebookmark, theme, {{#str}}bookmarkcourseremove, theme_nova{{/str}}{{/pix}}
+                                        </button>
+                                    </div>
+                                {{/canbookmark}}
+                            </div>
+                            <div class="actions mr-md-4">
+                                {{{pageheadingbutton}}}
+                                {{#settingsmenu}}
+                                    {{{settingsmenu}}}
+                                {{/settingsmenu}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="course-header">
+                        {{{courseheader}}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{{#js}}
+require(['theme_nova/bookmark'], function(bookmark) {
+    bookmark.init('#bookmarkcourse');
+});
+{{/js}}
+{{/hasheader}}
