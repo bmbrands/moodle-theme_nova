@@ -110,9 +110,7 @@ class core_renderer extends boost_core_renderer {
                 $contextheader->contextupname = $course->fullname;
                 $contextheader->icon = $module->get_icon_url();
 
-                $secondarynav = new \theme_nova\secondary_navigation_activity($this->page);
-                $secondarynav->initialise($cm->modname);
-                $header->secondarynav = $secondarynav;
+                $header->secondarynav = false;
 
                 $header->contextheader = $this->render_from_template('theme_nova/contextheader', $contextheader);
             }
@@ -162,12 +160,11 @@ class core_renderer extends boost_core_renderer {
             $contextheader = (object)[];
             $contextheader->pagename = $courseexport->fullname;
             $contextheader->contextuplink = $categoryurl;
+            $contextheader->pagelink = new moodle_url('/course/view.php', ['id' => $course->id]);
             $contextheader->contextupname = $category->name;
             $contextheader->bgicon = $courseexport->courseimage;
 
-            $secondarynav = new \theme_nova\secondary_navigation($this->page);
-            $secondarynav->initialise();
-            $header->secondarynav = $secondarynav;
+            $header->secondarynav = new moodle_url('/course/admin.php', ['courseid' => $course->id]);
 
             $header->contextheader = $this->render_from_template('theme_nova/contextheader', $contextheader);
 
